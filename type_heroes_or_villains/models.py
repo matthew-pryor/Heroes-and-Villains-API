@@ -9,14 +9,14 @@ class Super_type(models.Model):
         Hero = 1
         Villain = 2
 
-    alignment = models.IntegerField(choices=Super_type_id.choices)
+    id = models.IntegerField(choices=Super_type_id.choices, primary_key=True)
 
-    alignment_type = models.CharField(max_length=255)
+    alignment = models.CharField(max_length=255)
 
-    if alignment == 1:
+    if id == 1:
         
-        alignment_type = 'Hero'
+        alignment = 'Hero'
 
-    elif alignment == 2:
+    elif id == 2:
 
-        alignment_type = 'Villain'
+        alignment = 'Villain'
