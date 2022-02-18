@@ -1,5 +1,4 @@
-from turtle import title
-from unicodedata import name
+from type_heroes_or_villains.models import Super_type
 from django.db import models
 
 # Create your models here.
@@ -11,10 +10,4 @@ class Supers(models.Model):
     primary_ability = models.CharField(max_length=255)
     secondary_ability = models.CharField(max_length=255)
     catchphrase = models.CharField(max_length=999)
-
-    class Super_type(models.IntegerChoices):
-
-        Hero = 1
-        Villain = 2
-
-    super_type_id = models.IntegerField(choices=Super_type.choices)
+    super_type = models.ForeignKey(Super_type, on_delete=models.CASCADE)
