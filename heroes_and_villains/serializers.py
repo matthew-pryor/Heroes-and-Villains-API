@@ -1,7 +1,5 @@
-from dataclasses import field
-from rest_framework import serializers
 
-from type_heroes_or_villains.models import Super_type
+from rest_framework import serializers
 from .models import Super
 
 class SuperSerializer(serializers.ModelSerializer):

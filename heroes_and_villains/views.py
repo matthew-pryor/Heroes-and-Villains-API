@@ -4,7 +4,6 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404
 from .serializers import SuperSerializer
 from .models import Super
-from heroes_and_villains import serializers
 
 # Create your views here.
 
@@ -49,7 +48,7 @@ def heroes_and_villains_detail(request, pk):
         serializer = SuperSerializer(supers, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     elif request.method == 'DELETE':
         
