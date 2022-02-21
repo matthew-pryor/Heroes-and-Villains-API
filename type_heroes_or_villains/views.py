@@ -27,3 +27,20 @@ def type_heroes_or_villains_list(request):
 def type_heroes_or_villains_detail(request, pk):
 
     super_types = get_object_or_404(SuperType, pk=pk)
+
+    if request.method == 'GET':
+
+        serializer = SuperTypeSerializer(super_types)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+
+        serializer = SuperTypeSerializer(super_types, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+
+    elif request.method == 'DELETE':
+
+        super_types.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
